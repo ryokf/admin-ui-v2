@@ -22,7 +22,7 @@ const AuthLayout = (props) => {
           duration: 0.4,
           scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
         }}
-        className="w-full max-w-sm bg-white dark:bg-gray-800"
+        className="w-full max-w-sm"
       >
         {/* logo start */}
         <div className="mb-8">
