@@ -13,6 +13,7 @@ import { AuthContext } from "./context/authContext";
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
 
+  // eslint-disable-next-line react/prop-types
   const RequireAuth = ({ children }) => {
     return isLoggedIn ? children : <Navigate to="/login" />;
   };
