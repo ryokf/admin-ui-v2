@@ -1,22 +1,24 @@
 import { expensesStatistics } from "../../../data/expenses";
-import BarsDataset from "../../Elements/BarChart";
 import Card from "../../Elements/Card";
+import BarsDataset from "../../Elements/BarChart";
 
 const CardStatistic = () => {
-  return (
-    <Card
-      variant="lg:col-span-2 min-h-max"
-      title="Statistics"
-      desc={
-        <div className="h-72">
-          <select className="font-bold text-lg ring-0 focus:outline-none bg-transparent">
-            <option>Weekly Comparison</option>
-          </select>
-          <BarsDataset desc={expensesStatistics} />
-        </div>
-      }
-    />
-  );
-};
+    // eslint-disable-next-line no-unused-vars
+    // const expensesStatisticCard = expensesStatistics.map((expensesStatistic) => (<div key={expensesStatistic.id}>{expensesStatistic.date}</div>));
 
-export default CardStatistic;
+    return (
+        <Card 
+            variant="md:col-span-2 min-h-max" 
+            title="Statistics"
+            desc={
+            <div className="h-72">
+                <select className="font-bold text-lg ring-0 focus:outline-none bg-transparent">
+                    <option value="">Weekly Comparison</option>
+                </select>
+                <BarsDataset desc={expensesStatistics}/>
+            </div>
+        } />
+    )
+}
+
+export default CardStatistic

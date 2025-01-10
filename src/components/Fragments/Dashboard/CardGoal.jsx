@@ -1,54 +1,10 @@
-import { useEffect, useState } from "react";
 import { goals } from "../../../data/goals";
 import Card from "../../Elements/Card";
 import CompositionExample from "../../Elements/GaugeChart";
 import { Icon } from "../../Elements/Icon";
-import Axios from "axios";
 
 const CardGoal = () => {
-  const [goals, setGoals] = useState({ presentAmount: 0, targetAmount: 0 });
-
-  const value = (goals.presentAmount * 100) / goals.targetAmount;
-
-  const getData = async () => {
-    try {
-      const refreshToken = localStorage.getItem("refreshToken");
-
-      const response = await axios.get("https://jwt-auth-eight-neon.vercel.app/goals", {
-        headers: {
-          Authorization: `Bearer ${refreshToken}`,
-        },
-      });
-
-      setGoals({
-        presentAmount: response.data.data[0].present_Amount,
-        targetAmount: response.data.data[0].target_Amount,
-      });
-    } catch (error) {
-      if (error.response) {
-        if (error.response.status == 401) {
-          setOpen(true);
-          setMsg({
-            severity: "error",
-            desc: "Session Has Expired. Please Login.",
-          });
-
-          setIsLoggedIn(false);
-          setName("");
-
-          localStorage.removeItem("refreshToken");
-          navigate("/login");
-        } else {
-          console.log(error.response);
-        }
-      }
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const chartsValue = goals.presentAmount * 100 / goals.targetAmount;
   return (
     <Card
       title="Goals"
@@ -56,7 +12,9 @@ const CardGoal = () => {
         <div className="p-2">
           <div className="flex justify-between">
             <div className="flex">
-              <span className="text-2xl font-bold me-4 self-center">${goals.presentAmount}</span>
+              <span className="text-2xl font-bold me-4 self-center">
+                ${goals.presentAmount}
+              </span>
               <div className="p-2 bg-gray-05 rounded-md box-border">
                 <Icon.Edit />
               </div>
@@ -73,7 +31,9 @@ const CardGoal = () => {
                 <div className="ms-2">
                   <span className="text-gray-02">Target Achieved</span>
                   <br />
-                  <span className="font-bold text-xl">${goals.targetAmount}</span>
+                  <span className="font-bold text-xl">
+                    ${goals.targetAmount}
+                  </span>
                 </div>
               </div>
               <div className="flex">
@@ -83,12 +43,14 @@ const CardGoal = () => {
                 <div className="ms-2">
                   <span className="text-gray-02">This Month Target</span>
                   <br />
-                  <span className="font-bold text-xl">${goals.presentAmount}</span>
+                  <span className="font-bold text-xl">
+                    ${goals.presentAmount}
+                  </span>
                 </div>
               </div>
             </div>
             <div className="ms-4 text-center">
-              <CompositionExample desc={value} />
+              <CompositionExample desc={chartsValue}/>
               <div className="flex justify-between">
                 <span className="text-gray-03">$0</span>
                 <span className="font-bold text-2xl">12K</span>

@@ -48,7 +48,7 @@ const App = () => {
       ),
     },
     {
-      path: "/goal",
+      path: "/goals",
       element: (
         <RequireAuth>
           <GoalPage />
@@ -56,7 +56,7 @@ const App = () => {
       ),
     },
     {
-      path: "/expense",
+      path: "/expenses",
       element: (
         <RequireAuth>
           <ExpensePage />
