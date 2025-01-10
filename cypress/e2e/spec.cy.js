@@ -5,7 +5,7 @@
 // });
 describe("User login", () => {
   it("should allow user to log in with valid credentials", () => {
-    cy.viewport(375, 812);
+    cy.viewport(1000, 660);
 
     cy.visit("http://localhost:5173/");
 
@@ -23,7 +23,7 @@ describe("User login", () => {
   });
 
   it("should not allow user to log in with invalid credentials", () => {
-    cy.viewport(550, 750);
+    cy.viewport(1000, 660);
 
     cy.visit("http://localhost:5173/");
 
