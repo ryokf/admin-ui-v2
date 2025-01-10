@@ -14,8 +14,6 @@ const CardBill = () => {
           },
         });
         const data = await response.json();
-        console.log(data)
-        console.log(localStorage.getItem("refreshToken"))
         setBillData(data.data);
         setLoading(false);
       } catch (error) {
