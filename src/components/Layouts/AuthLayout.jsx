@@ -5,6 +5,7 @@ import { NotifContext } from "../../context/notifContext";
 import SimpleBackdrop from "../Elements/Backdrop";
 import CustomizedSnackbars from "../Elements/SnackBar";
 import * as motion from "motion/react-client";
+import DarkMode from "../Elements/DarkMode";
 
 const AuthLayout = (props) => {
   const { children, type } = props;
@@ -137,10 +138,14 @@ const AuthLayout = (props) => {
             </div>
           )}
         </div>
+        <div className="flex justify-center w-full mt-3">
+        <DarkMode/>
+
+        </div>
         {/* link end */}
       </motion.div>
       {/* container end */}
-      <div className="absolute top-4 right-4">
+      {/* <div className="absolute top-4 right-4">
         <button
           onClick={() => {
             document.documentElement.classList.toggle('dark');
@@ -149,7 +154,7 @@ const AuthLayout = (props) => {
         >
           Toggle Dark Mode
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
